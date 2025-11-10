@@ -5,7 +5,33 @@
   "projects": {
     "my-first-angular-app": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:directive": {
+          "type": "directive"
+        },
+        "@schematics/angular:service": {
+          "type": "service"
+        },
+        "@schematics/angular:guard": {
+          "typeSeparator": "."
+        },
+        "@schematics/angular:interceptor": {
+          "typeSeparator": "."
+        },
+        "@schematics/angular:module": {
+          "typeSeparator": "."
+        },
+        "@schematics/angular:pipe": {
+          "typeSeparator": "."
+        },
+        "@schematics/angular:resolver": {
+          "typeSeparator": "."
+        },
+        "@schematics/angular:component": {
+          "standalone": false,
+          "type": "component"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -86,5 +112,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "ee9eef31-921f-4c2e-99bc-303f5dde36bc"
   }
 }
