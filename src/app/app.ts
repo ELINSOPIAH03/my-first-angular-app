@@ -1,8 +1,9 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, signal, AfterViewInit } from '@angular/core';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from "./shared/shared.module";
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   standalone: true, 
@@ -16,28 +17,20 @@ import { SharedModule } from "./shared/shared.module";
 export class App {
   protected readonly title = signal('my-first-angular-app');
 
-  dummyData = [
-    { title: 'Card Title', content: 'This is some card content.' },
-    { title: 'Another Card', content: 'More content in another card.' },
-    { title: 'Third Card', content: 'More content in a third card.' },
-    { title: 'Fourth Card', content: 'More content in a fourth card.' },
-    { title: 'Fifth Card', content: 'More content in a fifth card.' },
-  ];
-
-  showAlert = false;
-  alertMessage = '';
+  constructor(private router: Router) { }
 
   ngAfterViewInit() {
+    // Pertama kali halaman dimuat
     initFlowbite();
+
+    // jalankan setiap kali route berubah
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        setTimeout(() => {
+          initFlowbite();
+        }, 0);
+      });
   }
 
-  ShowAlert(title: string): void {
-    console.log('alert ', title);
-    this.showAlert = true;
-    this.alertMessage = title;
-  }
-
-  closeAlert(): void {
-    this.showAlert = false;
-  }
 }
