@@ -8,6 +8,7 @@ import { TaskComponent } from './modules/task/task.component';
 
 import { RouterModule } from '@angular/router';
 import { TitleComponent } from './components/title/title.component';
+import { TaskListComponent } from './modules/task-list/task-list.component';
 
 
 
@@ -19,6 +20,7 @@ import { TitleComponent } from './components/title/title.component';
     DashboardComponent,
     TaskComponent,
     TitleComponent,
+    TaskListComponent,
   ],
   imports: [
     CommonModule,
