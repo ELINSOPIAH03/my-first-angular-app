@@ -6,14 +6,15 @@
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                        <th>Project Name</th>
-                        <th>Assigned</th>
-                        <th>Asigment</th>
-                        <th>Difficulty</th>
-                        <th>Priority</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Aksi</th>
+                            <th>Project Name</th>
+                            <th>Assigned</th>
+                            <th>Asigment</th>
+                            <th>Difficulty</th>
+                            <th>Priority</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Description</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,6 +26,23 @@
                             <td>High</td>
                             <td>2011/04/25</td>
                             <td>2011/04/25</td>
+                            <td>Lorem ipsum dolor sit amet</td>
+                            <td class="">
+                                <div class="flex gap-3 items-center">
+                                    <div type="button" class="text-white rounded-md bg-blue-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-1.5 focus:outline-none">Edit</div>
+                                    <div type="button" class="text-white rounded-md bg-red-500 box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-1.5 focus:outline-none">Delete</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr *ngFor="let t of tasks">
+                            <td>{{ t.name }}</td>
+                            <td>{{ t.assigned }}</td>
+                            <td>{{ t.asigment }}</td>
+                            <td>{{ t.difficulty }}</td>
+                            <td>{{ t.priority }}</td>
+                            <td>{{ t.startdate }}</td>
+                            <td>{{ t.enddate }}</td>
+                            <td>{{ t.description }}</td>
                             <td class="">
                                 <div class="flex gap-3 items-center">
                                     <div type="button" class="text-white rounded-md bg-blue-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-1.5 focus:outline-none">Edit</div>

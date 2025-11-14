@@ -2,12 +2,28 @@
     <div class="py-6">
         <app-title title="Task Management"></app-title>
         <div class="px-4 mx-auto max-w-7xl sm:px-6 md:px-8 flex flex-col gap-4">
-            <form action="#">
+            <div
+                *ngIf="showAlert"
+                class="p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:text-blue-400 flex items-center justify-between"
+                role="alert">
+                <div>
+                    <span class="font-medium">{{ alertMessage }}</span> 
+                </div>
+                <button
+                    (click)="closeAlert()"
+                    class="text-blue-800 dark:text-blue-400 font-bold text-lg">
+                    ✕
+                </button>
+            </div>
+            <form #taskForm="ngForm" 
+                (ngSubmit)="submitForm(taskForm)"
+                autocomplete="off">
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Project
                             Name</label>
                         <input type="text" name="name" id="name"
+                            [(ngModel)]="task.name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                             placeholder="Project name" required="">
                     </div>
@@ -15,6 +31,7 @@
                         <label for="assigned"
                             class="block mb-2 text-sm font-medium text-gray-900 ">Assigned</label>
                         <input type="text" name="assigned" id="assigned"
+                            [(ngModel)]="task.assigned"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                             placeholder="Assigned" required="">
                     </div>
@@ -22,6 +39,7 @@
                         <label for="asigment"
                             class="block mb-2 text-sm font-medium text-gray-900 ">Asigment</label>
                         <input type="text" name="asigment" id="asigment"
+                            [(ngModel)]="task.asigment"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                             placeholder="Asigment" required="">
                     </div>
@@ -29,6 +47,8 @@
                         <label for="difficulty"
                             class="block mb-2 text-sm font-medium text-gray-900 ">Difficulty</label>
                         <select id="difficulty"
+                            name="difficulty"
+                            [(ngModel)]="task.difficulty"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 ">
                             <option selected="">Select Difficulty</option>
                             <option value="easy">Easy</option>
@@ -40,6 +60,8 @@
                         <label for="priority"
                             class="block mb-2 text-sm font-medium text-gray-900 ">Priority</label>
                         <select id="priority"
+                            name="priority"
+                            [(ngModel)]="task.priority"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 ">
                             <option selected="">Select Priority</option>
                             <option value="low">Low</option>
@@ -51,6 +73,7 @@
                         <label for="startdate"
                             class="block mb-2 text-sm font-medium text-gray-900 ">Start Date</label>
                         <input type="date" name="startdate" id="startdate"
+                            [(ngModel)]="task.startdate"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                             required="">
                     </div>
@@ -58,6 +81,7 @@
                         <label for="enddate"
                             class="block mb-2 text-sm font-medium text-gray-900 ">End Date</label>
                         <input type="date" name="enddate" id="enddate"
+                            [(ngModel)]="task.enddate"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                             required="">
                     </div>
@@ -65,6 +89,8 @@
                         <label for="description"
                             class="block mb-2 text-sm font-medium text-gray-900">Description</label>
                         <textarea id="description" rows="8"
+                            name="description"
+                            [(ngModel)]="task.description"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
                             placeholder="Your description here"></textarea>
                     </div>

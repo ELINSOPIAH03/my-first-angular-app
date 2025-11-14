@@ -9,6 +9,7 @@ import { TaskComponent } from './modules/task/task.component';
 import { RouterModule } from '@angular/router';
 import { TitleComponent } from './components/title/title.component';
 import { TaskListComponent } from './modules/task-list/task-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -25,6 +26,7 @@ import { TaskListComponent } from './modules/task-list/task-list.component';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule
   ],
   exports: [
     FooterComponent,
