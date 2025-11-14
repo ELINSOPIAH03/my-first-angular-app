@@ -10,6 +10,9 @@ declare var $: any;
 export class TaskListComponent implements OnInit,AfterViewInit {
   tasks: Task[] = [];
 
+  showAlert = false;
+  alertMessage = '';
+
   constructor(private taskService: TaskService) { }
   ngOnInit(): void {
     this.tasks = this.taskService.getTasks();
@@ -20,4 +23,15 @@ export class TaskListComponent implements OnInit,AfterViewInit {
     });
   }
 
+  deleteTask(id: number) {
+    this.taskService.deleteTask(id);
+    this.tasks = this.taskService.getTasks();
+
+    this.showAlert = true;
+    this.alertMessage = 'Task deleted successfully!';
+  }
+
+  closeAlert(): void {
+    this.showAlert = false;
+  }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export interface Task {
+  id: number;
   name: string;
   assigned: string;
   asigment: string;
@@ -19,7 +20,12 @@ export class TaskService {
 
   constructor() { }
   addTask(task: Task) {
+    task.id = Date.now();
     this.tasks.push(task);
+  }
+
+  deleteTask(id: number) {
+    this.tasks = this.tasks.filter(t => t.id !== id);
   }
 
   getTasks() {

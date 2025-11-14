@@ -2,6 +2,19 @@
     <div class="py-6">
         <app-title title="List Task"></app-title>
         <div class="px-4 mx-auto max-w-7xl sm:px-6 md:px-8 flex flex-col gap-4">
+            <div
+                *ngIf="showAlert"
+                class="p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:text-blue-400 flex items-center justify-between"
+                role="alert">
+                <div>
+                    <span class="font-medium">Info alert!</span> {{ alertMessage }}
+                </div>
+                <button
+                    (click)="closeAlert()"
+                    class="text-blue-800 dark:text-blue-400 font-bold text-lg">
+                    ✕
+                </button>
+            </div>
             <div class="w-full p-6 bg-white card-tabel rounded-lg shadow-sm overflow-visible relative">
                 <table id="example" class="display" style="width:100%">
                     <thead>
@@ -18,22 +31,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>Lulu</td>
-                            <td>Lala</td>
-                            <td>Easy</td>
-                            <td>High</td>
-                            <td>2011/04/25</td>
-                            <td>2011/04/25</td>
-                            <td>Lorem ipsum dolor sit amet</td>
-                            <td class="">
-                                <div class="flex gap-3 items-center">
-                                    <div type="button" class="text-white rounded-md bg-blue-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-1.5 focus:outline-none">Edit</div>
-                                    <div type="button" class="text-white rounded-md bg-red-500 box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-1.5 focus:outline-none">Delete</div>
-                                </div>
-                            </td>
-                        </tr>
                         <tr *ngFor="let t of tasks">
                             <td>{{ t.name }}</td>
                             <td>{{ t.assigned }}</td>
@@ -45,8 +42,11 @@
                             <td>{{ t.description }}</td>
                             <td class="">
                                 <div class="flex gap-3 items-center">
-                                    <div type="button" class="text-white rounded-md bg-blue-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-1.5 focus:outline-none">Edit</div>
-                                    <div type="button" class="text-white rounded-md bg-red-500 box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-1.5 focus:outline-none">Delete</div>
+                                    <div type="button" 
+                                        class="cursor-pointer text-white rounded-md bg-blue-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-1.5 focus:outline-none">Edit</div>
+                                    <div type="button" 
+                                        (click)="deleteTask(t.id)"    
+                                        class="cursor-pointer text-white rounded-md bg-red-500 box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-1.5 focus:outline-none">Delete</div>
                                 </div>
                             </td>
                         </tr>
