@@ -18,7 +18,7 @@
             <form #taskForm="ngForm" 
                 (ngSubmit)="submitForm(taskForm)"
                 autocomplete="off">
-                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6 mb-2">
                     <div class="sm:col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Project
                             Name</label>
@@ -95,10 +95,16 @@
                             placeholder="Your description here"></textarea>
                     </div>
                 </div>
-                <button type="submit"
-                    class="inline-flex bg-blue-600 items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200  hover:bg-primary-800">
+                <button *ngIf="!isEdit" type="submit"
+                    class="bg-blue-600 text-white px-5 py-2 rounded">
                     Assign Task
                 </button>
+
+                <button *ngIf="isEdit" type="submit"
+                    class="bg-green-600 text-white px-5 py-2 rounded">
+                    Update Task
+                </button>
+
             </form>
         </div>
     </div>

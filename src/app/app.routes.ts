@@ -7,5 +7,6 @@ export const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'task', component: TaskComponent },
+    { path: 'task/:id', component: TaskComponent },
     { path: 'task-list', component: TaskListComponent },
 ];

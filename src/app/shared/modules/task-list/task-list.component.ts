@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { TaskService, Task } from '../../services/task.service';
 declare var $: any;
@@ -13,7 +14,7 @@ export class TaskListComponent implements OnInit,AfterViewInit {
   showAlert = false;
   alertMessage = '';
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private router: Router) { }
   ngOnInit(): void {
     this.tasks = this.taskService.getTasks();
   }
@@ -29,6 +30,10 @@ export class TaskListComponent implements OnInit,AfterViewInit {
 
     this.showAlert = true;
     this.alertMessage = 'Task deleted successfully!';
+  }
+
+  editTask(id: number) {
+    this.router.navigate(['/task', id]);
   }
 
   closeAlert(): void {

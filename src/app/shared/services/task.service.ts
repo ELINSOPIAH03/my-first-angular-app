@@ -28,6 +28,13 @@ export class TaskService {
     this.tasks = this.tasks.filter(t => t.id !== id);
   }
 
+  updateTask(updatedTask: Task) {
+    const index = this.tasks.findIndex(t => t.id === updatedTask.id);
+    if (index !== -1) {
+      this.tasks[index] = updatedTask;
+    }
+  }
+
   getTasks() {
     return this.tasks;
   }
